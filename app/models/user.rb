@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
 	# Entre otras cosas...
 	has_secure_password
 	# Validacion para que el pasword sea mayor a 6 digitos
-	validates :password, length: { minimum: 6 }
+	# allow_blank: true permite que la contraseña quede en blanco solo en la accion update
+	validates :password, length: { minimum: 6 }, allow_blank: true
 
 	## Metodo definido para el test
 	## Returns the hash digest of the given string.

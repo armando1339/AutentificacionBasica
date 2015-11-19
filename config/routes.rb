@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
-  get    'login'   => 'sessions#new'
-  post   'login'   => 'sessions#create'
-  delete 'logout'  => 'sessions#destroy'
-
-  get 'signup' => 'users#new'
+# Rutas para el modelo (Clase) Users y sus diferentes controles     ---->
+  # Rutas para UsersController
+  resources :users, controller: 'users/users', only: [:index, :show, :edit, :update, :destroy]
+  # Rutas para RegistrationsController
+  get         'signup'              =>      'users/registrations#new'
+  post        'signup'              =>      'users/registrations#create'
+  # Rutas para SessionsController
+  get         'login'               =>      'users/sessions#new'
+  post        'login'               =>      'users/sessions#create'
+  delete      'logout'              =>      'users/sessions#destroy'
+#########################################################################
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -21,7 +27,6 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-  resources :users
 
   # Example resource route with options:
   #   resources :products do

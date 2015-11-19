@@ -1,0 +1,9 @@
+
+<!-- aside (menu lateral) -->
+	<% if logged_in? %>
+		<%= render 'layouts/aside' %>
+	<% end %>
+
+<%= gravatar_for @user %>
+<p><%= @user.name %></p> 
+<p><%= @user.email %></p>
